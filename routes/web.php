@@ -16,11 +16,11 @@ Route::group([
 
 	Route::get('/logs', [DashboardController::class, 'activity_logs'])->name('logs');
 	Route::post('/logs/delete', [DashboardController::class, 'delete_logs'])->name('logs.delete');
-	
+
 	// Settings menu
 	Route::view('/settings', 'admin.settings')->name('settings');
 	Route::post('/settings', [DashboardController::class, 'settings_store'])->name('settings');
-	
+
 	// Profile menu
 	Route::view('/profile', 'admin.profile')->name('profile');
 	Route::post('/profile', [DashboardController::class, 'profile_update'])->name('profile');
