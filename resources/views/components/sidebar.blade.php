@@ -3,7 +3,7 @@
         <div class="sidebar-brand-icon">
             <img src="{{ asset((setting('logo')) ? '/storage/'.setting('logo') : 'dist/img/logo/logo2.png') }}">
         </div>
-        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        <div class="sidebar-brand-text mx-3">Flare Travel</div>
     </a>
     <hr class="sidebar-divider my-0">
 
@@ -15,9 +15,27 @@
     />
     <hr class="sidebar-divider mb-0">
 
-    @can('member-list')
+    @can('pegawai')
     <x-nav-link
-        text="Member"
+        text="Jadwal Keberangkatan"
+        icon="users"
+        url="{{ route('admin.member') }}"
+        active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
+    />
+    @endcan
+
+    @can('pegawai')
+    <x-nav-link
+        text="Tiket"
+        icon="users"
+        url="{{ route('admin.member') }}"
+        active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
+    />
+    @endcan
+
+    @can('pegawai')
+    <x-nav-link
+        text="Mobil"
         icon="users"
         url="{{ route('admin.member') }}"
         active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
