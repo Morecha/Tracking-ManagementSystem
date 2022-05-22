@@ -15,8 +15,6 @@
     />
     <hr class="sidebar-divider mb-0">
 
-    <hr class="sidebar-divider mb-0">
-
     @can('member-list')
     <x-nav-link
         text="Member"
@@ -25,6 +23,8 @@
         active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
     />
     @endcan
+
+    <hr class="sidebar-divider mb-0">
 
     @can('member-list')
     <x-nav-link

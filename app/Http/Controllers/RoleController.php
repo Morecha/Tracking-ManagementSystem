@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace App\Http\Controllers;
 
 
@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use DB;
-    
+use Illuminate\Support\Facades\DB;
+
 class RoleController extends Controller
 {
     function __construct()
@@ -18,7 +18,7 @@ class RoleController extends Controller
          $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
-    
+
     /**
     * Show all roles
     *
@@ -29,7 +29,7 @@ class RoleController extends Controller
         $roles = Role::paginate(5);
         return view('admin.roles.index',compact('roles'));
     }
-    
+
     /**
     * Create a new roles
     *
@@ -40,7 +40,7 @@ class RoleController extends Controller
         $permission = Permission::get();
         return view('admin.roles.create',compact('permission'));
     }
-    
+
     /**
     * Store new roles into database
     *
@@ -54,7 +54,7 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
-    
+
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
@@ -65,11 +65,11 @@ class RoleController extends Controller
             ->causedBy(auth()->user())
             ->performedOn($role)
            ->log('You have created roles');
-    
+
         return redirect()->route('admin.roles')
                         ->with('success','Role created successfully');
     }
-    
+
     /**
     * Edit a roles
     *
@@ -85,10 +85,10 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
 
-    
+
         return view('admin.roles.edit',compact('role','permission','rolePermissions'));
     }
-    
+
     /**
     * Update roles
     *
@@ -101,13 +101,13 @@ class RoleController extends Controller
             'name' => 'required',
             'permission' => 'required',
         ]);
-    
+
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-    
+
         $role->syncPermissions($request->input('permission'));
-    
+
 
         // logging
         $roles = new Role();
@@ -120,7 +120,7 @@ class RoleController extends Controller
         return redirect()->route('admin.roles')
                         ->with('success','Role updated successfully');
     }
-    
+
     /**
     * Show all roles
     *
