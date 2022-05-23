@@ -15,12 +15,15 @@ class CreateKendaraansTable extends Migration
     {
         Schema::create('kendaraans', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_jalur')->unsigned()->nullable();
             $table->string('no_kendaraan')->nullable();
             $table->string('no_plat')->nullable();
             $table->string('jenis_kendaraan')->nullable();
             $table->integer('jumlah_penumpang')->nullable();
             $table->integer('jumlah_penumpang_now')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_jalur')->references('id')->on('jalurs')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

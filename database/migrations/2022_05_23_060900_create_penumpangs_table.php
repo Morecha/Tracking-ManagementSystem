@@ -15,12 +15,12 @@ class CreatePenumpangsTable extends Migration
     {
         Schema::create('penumpangs', function (Blueprint $table) {
             $table->id();
-            $table->string('id_kendaraan')->unsigned()->nullable();
+            $table->bigInteger('id_kendaraan')->unsigned()->nullable();
             $table->string('kode_penumpang')->nullable();
             $table->string('atas_nama')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_kendaraan')->references('id')->on('kendaraan')->onUpdate('cascade')
+            $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')
             ->onDelete('cascade');
         });
     }

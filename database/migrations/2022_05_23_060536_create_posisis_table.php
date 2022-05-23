@@ -20,7 +20,7 @@ class CreatePosisisTable extends Migration
             $table->float('long')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_kendaraan')->references('id')->on('kendaraan')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
