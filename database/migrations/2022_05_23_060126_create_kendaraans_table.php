@@ -19,6 +19,7 @@ class CreateKendaraansTable extends Migration
             $table->string('no_kendaraan')->nullable();
             $table->string('no_plat')->nullable();
             $table->string('jenis_kendaraan')->nullable();
+            $table->string('gambar')->nullable();
             $table->integer('jumlah_penumpang')->nullable();
             $table->integer('jumlah_penumpang_now')->nullable();
             $table->timestamps();

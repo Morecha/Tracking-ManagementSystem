@@ -17,7 +17,7 @@
 
     @can('pegawai')
     <x-nav-link
-        text="Jadwal Keberangkatan"
+        text="Jadwal dan Pemesanan"
         icon="users"
         url="{{ route('admin.jadwal') }}"
         active="{{ request()->routeIs('admin.jadwal') ? ' active' : '' }}"
@@ -26,7 +26,7 @@
 
     @can('pegawai')
     <x-nav-link
-        text="Tiket"
+        text="Konsumen"
         icon="users"
         url="{{ route('admin.tiket') }}"
         active="{{ request()->routeIs('admin.tiket') ? ' active' : '' }}"

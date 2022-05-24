@@ -1,13 +1,12 @@
 <x-app-layout>
-	<x-slot name="title">Tiket</x-slot>
+	<x-slot name="title">Penumpang</x-slot>
 
 	<x-card>
 		<table class="table table-bordered">
 			<thead>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Role</th>
-				<th>Action</th>
+				<th>Kode</th>
+				<th>Atas_nama</th>
+				<th>Kota_tujuan</th>
 			</thead>
 			<tbody>
 

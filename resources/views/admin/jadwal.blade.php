@@ -4,10 +4,11 @@
 	<x-card>
 		<table class="table table-bordered">
 			<thead>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Role</th>
-				<th>Action</th>
+				<th>Kota Asal</th>
+				<th>Kota Tujuan</th>
+				<th>Keberangkatan</th>
+				<th>Harga</th>
+                <th>Option</th>
 			</thead>
 			<tbody>
 
