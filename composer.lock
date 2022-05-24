@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7712f054fa2126ef9fc087c3f7cf66a2",
+    "content-hash": "074ec8b414e08d1f493783ccb65a8745",
     "packages": [
         {
             "name": "akaunting/laravel-setting",
@@ -128,6 +128,57 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
+        },
+        {
+            "name": "bagusindrayana/laravel-map",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bagusindrayana/laravel-map.git",
+                "reference": "7d407ac637d926205a80e82a89b7a71cb7afef5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bagusindrayana/laravel-map/zipball/7d407ac637d926205a80e82a89b7a71cb7afef5a",
+                "reference": "7d407ac637d926205a80e82a89b7a71cb7afef5a",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^4.10"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bagusindrayana\\LaravelMap\\LaravelMapServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bagusindrayana\\LaravelMap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bagus Indrayana",
+                    "email": "bagusindrayanaindo@gmail.com"
+                }
+            ],
+            "description": "map view for laravel",
+            "support": {
+                "issues": "https://github.com/bagusindrayana/laravel-map/issues",
+                "source": "https://github.com/bagusindrayana/laravel-map/tree/v1.0.6"
+            },
+            "abandoned": "bagusindrayana/laravel-maps",
+            "time": "2021-12-28T05:58:08+00:00"
         },
         {
             "name": "bagusindrayana/laravel-maps",

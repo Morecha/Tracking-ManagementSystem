@@ -78,7 +78,7 @@ class DashboardController extends Controller
             }
 
             $data['password'] = Hash::make($request->new_password);
-        } 
+        }
 
         // for update avatar
         if($request->avatar) {
@@ -88,10 +88,10 @@ class DashboardController extends Controller
                 unlink(storage_path('app/public/'.auth()->user()->avatar));
             }
         }
-        
+
         // update profile
         auth()->user()->update($data);
-        
+
         return redirect()->back()->with('success', 'Profile updated!');
     }
 
@@ -117,7 +117,7 @@ class DashboardController extends Controller
         }
 
         return '';
-        
+
     }
 
     public function delete_logs()

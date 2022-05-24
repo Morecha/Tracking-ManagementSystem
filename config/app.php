@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
-
+        BagusIndrayana\LaravelMap\LaravelMapServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -179,7 +179,7 @@ return [
 
         //....
 
-        Bagusindrayana\LaravelMaps\LaravelMapsServiceProvider::class,
+
 
         //...
     ],
@@ -234,7 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'LaravelMap'=>BagusIndrayana\LaravelMap\LaravelMap::class
     ],
 
 ];

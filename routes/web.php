@@ -1,11 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{DashboardController, UserController, RoleController};
+use App\Http\Controllers\{DashboardController, UserController, RoleController,
+    DriverController,
+    JalurController,
+    KendaraanController,
+    PenumpangController,
+    PosisiController};
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {return view('welcome');});
+
+Route::get('/', [PosisiController::class, 'index'])->name('index');
 
 Route::group([
 	'middleware' => 'auth',

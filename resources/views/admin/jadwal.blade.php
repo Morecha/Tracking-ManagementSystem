@@ -1,5 +1,5 @@
 <x-app-layout>
-	<x-slot name="title">Users</x-slot>
+	<x-slot name="title">Jadwal</x-slot>
 
 	<x-card>
 		<table class="table table-bordered">
@@ -28,7 +28,7 @@
 				</tr>
 				@empty
 				<tr>
-					<td colspan="3" class="text-center">No Member</td>
+					<td colspan="3" class="text-center">No Schedules</td>
 				</tr>
 				@endforelse
 			</tbody>
