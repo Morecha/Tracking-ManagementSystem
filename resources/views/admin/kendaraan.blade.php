@@ -1,5 +1,5 @@
 <x-app-layout>
-	<x-slot name="title">Tiket</x-slot>
+	<x-slot name="title">Transportations</x-slot>
 
 	<x-card>
 		<table class="table table-bordered">

@@ -19,6 +19,19 @@ Route::group([
 ], function(){
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    //jadwal atau shcedule
+    Route::get('/jadwal',[JalurController::class, 'index'])->name('jadwal');
+
+    //tiket dan pembeli
+    Route::get('/tiket',[PenumpangController::class, 'index'])->name('tiket');
+
+    //kendaraan
+    Route::get('/kendaraan',[KendaraanController::class, 'index'])->name('kendaraan');
+
+    //driver
+    Route::get('/driver', [DriverController::class, 'index'])->name('driver');
+
+
 	Route::get('/logs', [DashboardController::class, 'activity_logs'])->name('logs');
 	Route::post('/logs/delete', [DashboardController::class, 'delete_logs'])->name('logs.delete');
 
@@ -47,7 +60,6 @@ Route::group([
 	Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
 	Route::post('/roles/{id}/update', [RoleController::class, 'update'])->name('roles.update');
 	Route::post('/roles/{id}/delete', [RoleController::class, 'destroy'])->name('roles.delete');
-
 });
 
 

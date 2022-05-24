@@ -19,8 +19,8 @@
     <x-nav-link
         text="Jadwal Keberangkatan"
         icon="users"
-        url="{{ route('admin.member') }}"
-        active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
+        url="{{ route('admin.jadwal') }}"
+        active="{{ request()->routeIs('admin.jadwal') ? ' active' : '' }}"
     />
     @endcan
 
@@ -28,17 +28,26 @@
     <x-nav-link
         text="Tiket"
         icon="users"
-        url="{{ route('admin.member') }}"
-        active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
+        url="{{ route('admin.tiket') }}"
+        active="{{ request()->routeIs('admin.tiket') ? ' active' : '' }}"
     />
     @endcan
 
     @can('pegawai')
     <x-nav-link
-        text="Mobil"
+        text="Transportation"
         icon="users"
-        url="{{ route('admin.member') }}"
-        active="{{ request()->routeIs('admin.member') ? ' active' : '' }}"
+        url="{{ route('admin.kendaraan') }}"
+        active="{{ request()->routeIs('admin.kendaraan') ? ' active' : '' }}"
+    />
+    @endcan
+
+    @can('pegawai')
+    <x-nav-link
+        text="Drivers"
+        icon="users"
+        url="{{ route('admin.driver') }}"
+        active="{{ request()->routeIs('admin.driver') ? ' active' : '' }}"
     />
     @endcan
 
