@@ -14,7 +14,8 @@ class JalurController extends Controller
      */
     public function index()
     {
-        return view('admin.jadwal');
+        $jalur = jalur::orderby('kota_asal')->get();
+        return view('admin.jadwal',compact('jalur'));
     }
 
     /**
