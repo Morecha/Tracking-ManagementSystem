@@ -18,7 +18,7 @@ class CreateDriversTable extends Migration
             $table->bigInteger('id_kendaraan')->unsigned()->nullable();
             $table->string('nama')->nullable();
             $table->integer('NIP')->nullable();
-            $table->integer('contac_person')->nullable();
+            $table->string('contac_person')->nullable();
             $table->timestamps();
 
             $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')
