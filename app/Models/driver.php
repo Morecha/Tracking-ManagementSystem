@@ -10,5 +10,10 @@ class driver extends Model
     use HasFactory;
     protected $table = 'drivers';
     protected static $ignoreChangedAttributes = ['update_at'];
-    protected $fillable = [];
+    protected $fillable = [
+        'id_kendaraan',
+        'nama',
+        'NIP',
+        'contac_person'
+    ];
 }

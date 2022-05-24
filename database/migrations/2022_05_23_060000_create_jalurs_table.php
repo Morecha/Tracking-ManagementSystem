@@ -18,6 +18,7 @@ class CreateJalursTable extends Migration
             $table->string('kota_asal')->nullable();
             $table->string('kota_tujuan')->nullable();
             $table->integer('harga')->nullable();
+            $table->time('keberangkatan')->nullable();
             $table->timestamps();
         });
     }
