@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class jalur extends Model
+class hari extends Model
 {
     use HasFactory;
-    protected $table = 'jalurs';
+    protected $table = 'haris';
     protected static $ignoreChangedAttributes = ['update_at'];
     protected $fillable = [
-        'kota_asal',
-        'kota_tujuan',
-        'harga',
-        'keberangkatan',
-        'hari'
+        'nama_hari'
     ];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\jalur;
 use App\Models\penumpang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PenumpangController extends Controller
 {
@@ -15,10 +16,14 @@ class PenumpangController extends Controller
      */
     public function index()
     {
-        // $penumpang = penumpang::orderby('id_jalur')->get();
-        $penumpang = penumpang::join("jalurs", function ($join) {
-                $join->on("jalurs.id","=","penumpangs.id_jalur");
-                })->get();
+
+        $penumpang = DB::table('penumpangs')
+                    ->join('jalurs', 'jalurs.id', '=', 'penumpangs.id_jalur')
+                    ->join('haris', 'haris.id', '=', 'jalurs.hari')
+                    ->orderBy('haris.id')
+                    ->orderBy('keberangkatan')
+                    ->get();
+
         return view('admin.tiket', compact('penumpang'));
     }
 

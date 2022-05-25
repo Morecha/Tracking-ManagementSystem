@@ -2,6 +2,9 @@
 	<x-slot name="title">Drivers</x-slot>
 
 	<x-card>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-success me-md-2">Tambah Driver</button>
+        </div><br>
 		<table class="table table-bordered">
 			<thead>
 				<th>Name</th>

@@ -15,11 +15,15 @@ class CreateJalursTable extends Migration
     {
         Schema::create('jalurs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('hari')->unsigned()->nullable();
             $table->string('kota_asal')->nullable();
             $table->string('kota_tujuan')->nullable();
             $table->integer('harga')->nullable();
             $table->time('keberangkatan')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('hari')->references('id')->on('haris')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -2,6 +2,9 @@
 	<x-slot name="title">Transportations</x-slot>
 
 	<x-card>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-success me-md-2">Tambah Kendaraan</button>
+        </div><br>
 		<table class="table table-bordered">
 			<thead>
 				<th>Plat nomor</th>

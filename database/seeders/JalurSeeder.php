@@ -17,13 +17,15 @@ class JalurSeeder extends Seeder
         DB::table('jalurs')->insert([
             'kota_asal'=>'Malang',
             'kota_tujuan'=>'Surabaya',
-            'harga'=>100000
+            'harga'=>100000,
+            'hari' => 1
         ]);
 
         DB::table('jalurs')->insert([
             'kota_asal'=>'Surabaya',
             'kota_tujuan'=>'Malang',
-            'harga'=>100000
+            'harga'=>100000,
+            'hari' => 2
         ]);
     }
 }
