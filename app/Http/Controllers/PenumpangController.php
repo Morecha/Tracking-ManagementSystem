@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\jalur;
 use App\Models\penumpang;
+use App\Models\hari;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PenumpangController extends Controller
 {
@@ -20,7 +22,7 @@ class PenumpangController extends Controller
         $penumpang = DB::table('penumpangs')
                     ->join('jalurs', 'jalurs.id', '=', 'penumpangs.id_jalur')
                     ->join('haris', 'haris.id', '=', 'jalurs.hari')
-                    ->orderBy('haris.id')
+                    ->orderBy('jalurs.id')
                     ->orderBy('keberangkatan')
                     ->get();
 
@@ -39,9 +41,13 @@ class PenumpangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($request)
     {
-        //
+
+        $tujuan = jalur::where('id',$request)->first();
+        $hari = hari::where('id',$tujuan->hari)->first();
+        $ini = Str::random(7);
+        return view('admin.tiket.create',compact('tujuan','hari','ini'));
     }
 
     /**
@@ -52,7 +58,16 @@ class PenumpangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_jalur' => 'required',
+            'kode_penumpang' => 'required',
+            'atas_nama' => 'required'
+        ]);
+
+        $input = $request->all();
+        penumpang::create($input);
+
+        return redirect('/admin/tiket')->with('success','tiket created successfully');
     }
 
     /**

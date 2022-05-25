@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kendaraan;
 use App\Models\jalur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KendaraanController extends Controller
 {
@@ -15,10 +16,14 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        $kendaraan = kendaraan::join("jalurs", function ($join) {
-            $join->on("jalurs.id","=","kendaraans.id_jalur");
-            })->get();
+        // $kendaraan = kendaraan::join("jalurs", function ($join) {
+        //     $join->on("jalurs.id","=","kendaraans.id_jalur");
+        //     })->get();
 
+        $kendaraan = DB::table('jalurs')
+                    ->join('kendaraans','jalurs.id','=','kendaraans.id_jalur')
+                    ->orderBy('kendaraans.id')
+                    ->get();
         return view('admin.kendaraan',compact('kendaraan'));
     }
 
@@ -73,9 +78,13 @@ class KendaraanController extends Controller
      * @param  \App\Models\kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function edit(kendaraan $kendaraan)
+    public function edit($id)
     {
-        //
+        $kendaraan = kendaraan::find($id);
+        $jalur = jalur::where('id',$kendaraan->id)->first();
+        $alljalur = jalur::orderby('id')->get();
+
+        return view('admin.kendaraan.edit', compact('kendaraan','jalur','alljalur'));
     }
 
     /**
@@ -85,9 +94,21 @@ class KendaraanController extends Controller
      * @param  \App\Models\kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kendaraan $kendaraan)
+    public function update(Request $request, $id)
     {
-        //
+        $update = kendaraan::find($id);
+        $this->validate($request, [
+            'no_kendaraan' => 'required',
+            'no_plat' => 'required',
+            'jenis_kendaraan' => 'required',
+            'jumlah_penumpang' => 'required',
+            'id_jalur' => 'required'
+        ]);
+
+        $input = $request->all();
+        $update->fill($input)->save();
+
+        return redirect('admin/kendaraan')->with('success','Layanan update successfully');
     }
 
     /**

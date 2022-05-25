@@ -4,7 +4,7 @@
 	<x-card>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="button" class="btn btn-success me-md-2">
-                <a href="{{route('admin.driver.create')}}">Tambah Driver</a>
+                <a href="{{route('admin.driver.create')}}" style="color:white">Tambah Driver</a>
             </button>
         </div><br>
 		<table class="table table-bordered">
@@ -25,7 +25,7 @@
                     <td>{{$driver->jenis_kendaraan}}</td>
                     <td>{{$driver->no_plat}}</td>
                     <td>
-                        <a href="" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('admin.driver.edit',$driver->id)}}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>

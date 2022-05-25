@@ -18,7 +18,7 @@
     @can('pegawai')
     <x-nav-link
         text="Jadwal dan Pemesanan"
-        icon="users"
+        icon="window-maximize"
         url="{{ route('admin.jadwal') }}"
         active="{{ request()->routeIs('admin.jadwal') ? ' active' : '' }}"
     />
@@ -36,7 +36,7 @@
     @can('pegawai')
     <x-nav-link
         text="Transportation"
-        icon="users"
+        icon="flag"
         url="{{ route('admin.kendaraan') }}"
         active="{{ request()->routeIs('admin.kendaraan') ? ' active' : '' }}"
     />
@@ -45,7 +45,7 @@
     @can('pegawai')
     <x-nav-link
         text="Drivers"
-        icon="users"
+        icon="columns"
         url="{{ route('admin.driver') }}"
         active="{{ request()->routeIs('admin.driver') ? ' active' : '' }}"
     />

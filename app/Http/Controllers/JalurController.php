@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\jalur;
+use App\Models\hari;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +16,8 @@ class JalurController extends Controller
      */
     public function index()
     {
-        $jalur = DB::table('jalurs')
-                    ->join('haris', 'haris.id', '=', 'jalurs.hari')
+        $jalur = DB::table('haris')
+                    ->join('jalurs', 'haris.id', '=', 'jalurs.hari')
                     ->orderBy('haris.id')
                     ->get();
         return view('admin.jadwal',compact('jalur'));
@@ -29,7 +30,8 @@ class JalurController extends Controller
      */
     public function create()
     {
-        //
+        $hari = hari::orderby('id')->get();
+        return view('admin.jadwal.create',compact('hari'));
     }
 
     /**
@@ -40,7 +42,18 @@ class JalurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'kota_asal' => 'required',
+            'kota_tujuan' => 'required',
+            'harga' =>'required',
+            'hari' =>'required',
+            'keberangkatan' =>'required',
+        ]);
+
+        $input = $request->all();
+        jalur::create($input);
+
+        return redirect('/admin/jadwal')->with('success','Tempat created successfully');
     }
 
     /**
@@ -60,9 +73,12 @@ class JalurController extends Controller
      * @param  \App\Models\jalur  $jalur
      * @return \Illuminate\Http\Response
      */
-    public function edit(jalur $jalur)
+    public function edit($id)
     {
-        //
+        $jalur = jalur::find($id);
+        $hari = hari::where('id',$jalur->hari)->first();
+        $allhari = hari::orderby('id')->get();
+        return view('admin.jadwal.edit', compact('jalur','hari','allhari'));
     }
 
     /**
@@ -72,9 +88,21 @@ class JalurController extends Controller
      * @param  \App\Models\jalur  $jalur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jalur $jalur)
+    public function update(Request $request, $id)
     {
-        //
+        $update = jalur::find($id);
+        $this->validate($request, [
+            'kota_asal' => 'required',
+            'kota_tujuan' => 'required',
+            'harga' => 'required',
+            'keberangkatan' => 'required',
+            'hari' => 'required'
+        ]);
+
+        $input = $request->all();
+        $update->fill($input)->save();
+
+        return redirect('admin/jadwal')->with('success','Layanan update successfully');
     }
 
     /**

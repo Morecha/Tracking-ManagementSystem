@@ -29,7 +29,7 @@ Route::group([
 
     //tiket dan pembeli
     Route::get('/tiket',[PenumpangController::class, 'index'])->name('tiket');
-    Route::get('/tiket/create',[PenumpangController::class, 'create'])->name('tiket.create');
+    Route::get('/tiket/{id}/create',[PenumpangController::class, 'create'])->name('tiket.create');
     Route::post('/tiket/store',[PenumpangController::class, 'store'])->name('tiket.store');
     Route::get('/tiket/{id}/edit',[PenumpangController::class, 'edit'])->name('tiket.edit');
     Route::post('/tiket/{id}/update',[PenumpangController::class, 'update'])->name('tiket.update');
@@ -39,7 +39,7 @@ Route::group([
     Route::get('/kendaraan',[KendaraanController::class, 'index'])->name('kendaraan');
     Route::get('/kendaraan/create',[KendaraanController::class, 'create'])->name('kendaraan.create');
     Route::post('/kendaraan/store',[KendaraanController::class, 'store'])->name('kendaraan.store');
-    Route::get('/kendaraan{id}/edit',[KendaraanController::class, 'edit'])->name('kendaraan.edit');
+    Route::get('/kendaraan/{id}/edit',[KendaraanController::class, 'edit'])->name('kendaraan.edit');
     Route::post('/kendaraan/{id}/update',[KendaraanController::class, 'update'])->name('kendaraan.update');
     Route::post('/kendaraan/{id}/delete',[KendaraanController::class, 'destroy'])->name('kendaraan.delete');
 

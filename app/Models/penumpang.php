@@ -11,7 +11,7 @@ class penumpang extends Model
     protected $table = 'penumpangs';
     protected static $ignoreChangedAttributes = ['update_at'];
     protected $fillable = [
-        'id_kendaraan',
+        'id_jalur',
         'kode_penumpang',
         'atas_nama'
     ];

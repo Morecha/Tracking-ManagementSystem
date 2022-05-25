@@ -20,10 +20,11 @@ class DriverController extends Controller
         //     $join->on("drivers.id_kendaraan","=","kendaraans.id");
         //     })->get();
 
-        $driver = DB::table('drivers')
-                    ->join('kendaraans', 'kendaraans.id','=','drivers.id_kendaraan')
+        $driver = DB::table('kendaraans')
+                    ->join('drivers', 'kendaraans.id','=','drivers.id_kendaraan')
                     ->orderBy('drivers.id_kendaraan')
                     ->get();
+
         return view('admin.driver', compact('driver'));
     }
 
@@ -68,7 +69,7 @@ class DriverController extends Controller
      */
     public function show(driver $driver)
     {
-        //
+
     }
 
     /**
@@ -77,9 +78,13 @@ class DriverController extends Controller
      * @param  \App\Models\driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function edit(driver $driver)
+    public function edit($id)
     {
-        //
+        // $driver = driver::find('id',$id);
+        $driver = driver::find($id);
+        $mobil = kendaraan::where('id',$driver->id_kendaraan)->first();
+        $allmobil = kendaraan::orderby('id')->get();
+        return view('admin.driver.edit',compact('driver','mobil','allmobil'));
     }
 
     /**
@@ -89,9 +94,19 @@ class DriverController extends Controller
      * @param  \App\Models\driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, driver $driver)
+    public function update(Request $request, $id)
     {
-        //
+        $update = driver::find($id);
+        $this->validate($request, [
+            'nama' => 'required',
+            'NIP' => 'required',
+            'contac_person' => 'required',
+            'id_kendaraan' => 'required'
+        ]);
+        $input = $request->all();
+        $update->fill($input)->save();
+
+        return redirect('admin/driver')->with('success','Layanan update successfully');
     }
 
     /**

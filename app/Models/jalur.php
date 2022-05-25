@@ -11,6 +11,7 @@ class jalur extends Model
     protected $table = 'jalurs';
     protected static $ignoreChangedAttributes = ['update_at'];
     protected $fillable = [
+        'id',
         'kota_asal',
         'kota_tujuan',
         'harga',

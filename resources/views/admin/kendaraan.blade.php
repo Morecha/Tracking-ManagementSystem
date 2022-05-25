@@ -4,7 +4,7 @@
 	<x-card>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="button" class="btn btn-success me-md-2">
-                <a href="{{route('admin.kendaraan.create')}}">Tambah Kendaraan</a>
+                <a href="{{route('admin.kendaraan.create')}}" style="color:white">Tambah Kendaraan</a>
             </button>
         </div><br>
 		<table class="table table-bordered">
@@ -14,7 +14,6 @@
                 <th>Kota Tujuan</th>
 				<th>Jenis Kendaraan</th>
 				<th>Kursi</th>
-                <th>picture</th>
                 <th>option</th>
 			</thead>
 			<tbody>
@@ -25,9 +24,8 @@
                     <td>{{$kendaraan->kota_tujuan}}</td>
                     <td>{{$kendaraan->jenis_kendaraan}}</td>
                     <td>{{$kendaraan->jumlah_penumpang}}</td>
-                    <td>{{$kendaraan->gambar}}</td>
                     <td>
-                        <a href="" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('admin.kendaraan.edit',$kendaraan->id)}}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
