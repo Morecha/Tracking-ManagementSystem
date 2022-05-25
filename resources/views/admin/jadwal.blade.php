@@ -2,6 +2,11 @@
 	<x-slot name="title">Jadwal</x-slot>
 
 	<x-card>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-success me-md-2">
+                <a href="{{ route('admin.jadwal.create')}}">Tambah Jadwal</a>
+            </button>
+        </div><br>
 		<table class="table table-bordered">
 			<thead>
 				<th>Kota Asal</th>
@@ -15,7 +20,7 @@
                 <tr>
                     <td>{{$jalur->kota_asal}}</td>
                     <td>{{$jalur->kota_tujuan}}</td>
-                    <td>{{$jalur->keberangkatan}}</td>
+                    <td>{{$jalur->nama_hari}}, {{$jalur->keberangkatan}}</td>
                     <td>{{$jalur->harga}}</td>
                     <td>
                         <a href="" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>

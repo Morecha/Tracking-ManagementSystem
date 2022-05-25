@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\driver;
+use App\Models\kendaraan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DriverController extends Controller
 {
@@ -14,10 +16,14 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $driver = driver::join("kendaraans", function ($join) {
-            $join->on("drivers.id_kendaraan","=","kendaraans.id");
-            })->get();
+        // $driver = driver::join("kendaraans", function ($join) {
+        //     $join->on("drivers.id_kendaraan","=","kendaraans.id");
+        //     })->get();
 
+        $driver = DB::table('drivers')
+                    ->join('kendaraans', 'kendaraans.id','=','drivers.id_kendaraan')
+                    ->orderBy('drivers.id_kendaraan')
+                    ->get();
         return view('admin.driver', compact('driver'));
     }
 
@@ -28,7 +34,8 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        $kendaraan = kendaraan::orderby('id')->get();
+        return view('admin.driver.create',compact('kendaraan'));
     }
 
     /**
@@ -39,7 +46,18 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'NIP' => 'required',
+            'contac_person' =>'required',
+            'id_kendaraan' =>'required'
+        ]);
+
+        $input = $request->all();
+
+        driver::create($input);
+
+        return redirect('/admin/driver')->with('success','New Driver has been Created');
     }
 
     /**

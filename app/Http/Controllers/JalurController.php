@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\jalur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JalurController extends Controller
 {
@@ -14,7 +15,10 @@ class JalurController extends Controller
      */
     public function index()
     {
-        $jalur = jalur::orderby('kota_asal')->get();
+        $jalur = DB::table('jalurs')
+                    ->join('haris', 'haris.id', '=', 'jalurs.hari')
+                    ->orderBy('haris.id')
+                    ->get();
         return view('admin.jadwal',compact('jalur'));
     }
 

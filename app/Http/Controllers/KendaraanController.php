@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kendaraan;
+use App\Models\jalur;
 use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
@@ -28,7 +29,9 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        $jalur = jalur::orderby('id')->get();
+
+        return view('admin.kendaraan.create',compact('jalur'));
     }
 
     /**
@@ -39,7 +42,18 @@ class KendaraanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'id_jalur' => 'required',
+            'no_kendaraan' => 'required',
+            'no_plat' =>'required',
+            'jenis_kendaraan' =>'required',
+            'jumlah_penumpang' =>'required',
+        ]);
+
+        $input = $request->all();
+        kendaraan::create($input);
+
+        return redirect('/admin/kendaraan')->with('success','Tempat created successfully');
     }
 
     /**

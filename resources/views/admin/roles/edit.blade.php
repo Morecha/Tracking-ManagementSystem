@@ -13,7 +13,7 @@
 							<label class="mr-2">
 								<input type="checkbox" value="{{ $value->id }}" name="permission[]" {{ in_array($value->id, $rolePermissions) ? 'checked' : '' }} /> {{ $value->name }}
 							</label>
-							
+
 							@endforeach
 						<div class="mt-3">
 							<x-button type="primary" for="submit" text="Submit" />

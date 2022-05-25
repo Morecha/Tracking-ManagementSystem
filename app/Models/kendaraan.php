@@ -16,6 +16,6 @@ class kendaraan extends Model
         'no_plat',
         'jenis_kendaraan',
         'jumlah_penumpang',
-        'jumlah_penumpang_now'
+        'jumlah_penumpang_now',
     ];
 }
