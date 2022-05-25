@@ -4,15 +4,30 @@
 	<x-card>
 		<table class="table table-bordered">
 			<thead>
-				<th>no_plat</th>
-                <th>kota_asal</th>
-                <th>kota_kembali</th>
-				<th>jenis_kendaraan</th>
-				<th>kursi</th>
+				<th>Plat nomor</th>
+                <th>Kota Asal</th>
+                <th>Kota Tujuan</th>
+				<th>Jenis Kendaraan</th>
+				<th>Kursi</th>
+                <th>picture</th>
+                <th>option</th>
 			</thead>
 			<tbody>
-
-			</tbody>
+                @foreach ($kendaraan as $kendaraan)
+                <tr>
+                    <td>{{$kendaraan->no_plat}}</td>
+                    <td>{{$kendaraan->kota_asal}}</td>
+                    <td>{{$kendaraan->kota_tujuan}}</td>
+                    <td>{{$kendaraan->jenis_kendaraan}}</td>
+                    <td>{{$kendaraan->jumlah_penumpang}}</td>
+                    <td>{{$kendaraan->gambar}}</td>
+                    <td>
+                        <a href="" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
 		</table>
 	</x-card>
 </x-app-layout>

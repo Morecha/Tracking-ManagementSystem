@@ -14,7 +14,11 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        return view('admin.kendaraan');
+        $kendaraan = kendaraan::join("jalurs", function ($join) {
+            $join->on("jalurs.id","=","kendaraans.id_jalur");
+            })->get();
+
+        return view('admin.kendaraan',compact('kendaraan'));
     }
 
     /**

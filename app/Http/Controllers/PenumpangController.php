@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jalur;
 use App\Models\penumpang;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,19 @@ class PenumpangController extends Controller
      */
     public function index()
     {
-        return view('admin.tiket');
+        // $penumpang = penumpang::orderby('id_jalur')->get();
+        $penumpang = penumpang::join("jalurs", function ($join) {
+                $join->on("jalurs.id","=","penumpangs.id_jalur");
+                })->get();
+        return view('admin.tiket', compact('penumpang'));
     }
+
+
+
+    // SELECT penumpangs.id_jalur, penumpangs.kode_penumpang, penumpangs.atas_nama,
+    //jalurs.kota_asal, jalurs.kota_tujuan, jalurs.harga, jalurs.keberangkatan FROM
+    //penumpangs INNER JOIN jalurs ON penumpangs.id_jalur=jalurs.id
+
 
     /**
      * Show the form for creating a new resource.

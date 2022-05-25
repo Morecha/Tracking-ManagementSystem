@@ -14,7 +14,11 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view('admin.driver');
+        $driver = driver::join("kendaraans", function ($join) {
+            $join->on("drivers.id_kendaraan","=","kendaraans.id");
+            })->get();
+
+        return view('admin.driver', compact('driver'));
     }
 
     /**

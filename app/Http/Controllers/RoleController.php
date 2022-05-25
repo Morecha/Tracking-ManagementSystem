@@ -64,7 +64,7 @@ class RoleController extends Controller
             ->withProperties(['name' => $request->name])
             ->causedBy(auth()->user())
             ->performedOn($role)
-           ->log('You have created roles');
+            ->log('You have created roles');
 
         return redirect()->route('admin.roles')
                         ->with('success','Role created successfully');
