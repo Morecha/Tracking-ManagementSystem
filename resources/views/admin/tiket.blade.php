@@ -23,7 +23,10 @@
                     <td>{{$penumpang->kota_tujuan}}</td>
                     <td>{{$penumpang->nama_hari}}, {{$penumpang->keberangkatan}}</td>
                     <td>
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <form action="{{route('admin.tiket.delete',$penumpang->id)}}" method="post" style="display: inline-block;">
+                            @csrf
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

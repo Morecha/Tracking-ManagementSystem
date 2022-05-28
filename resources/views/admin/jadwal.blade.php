@@ -25,7 +25,10 @@
                     <td>
                         <a href="{{route('admin.tiket.create', $jalur->id)}}" class="btn btn-success mr-1"><i class="fas fa-shopping-cart"></i></a>
                         <a href="{{route('admin.jadwal.edit', $jalur->id)}}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <form action="{{route('admin.jadwal.delete',$jalur->id)}}" method="post" style="display: inline-block;">
+                            @csrf
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -102,7 +102,7 @@ class JalurController extends Controller
         $input = $request->all();
         $update->fill($input)->save();
 
-        return redirect('admin/jadwal')->with('success','Layanan update successfully');
+        return redirect('admin/jadwal')->with('success','Jadwal update successfully');
     }
 
     /**
@@ -111,8 +111,9 @@ class JalurController extends Controller
      * @param  \App\Models\jalur  $jalur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jalur $jalur)
+    public function destroy(jalur $jalur, $id)
     {
-        //
+        jalur::find($id)->delete();
+        return redirect('admin/jadwal')->with('success','Jadwal successfully deleted');
     }
 }

@@ -26,7 +26,10 @@
                     <td>{{$driver->no_plat}}</td>
                     <td>
                         <a href="{{route('admin.driver.edit',$driver->id)}}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <form action="{{route('admin.driver.delete',$driver->id)}}" method="post" style="display: inline-block;">
+                            @csrf
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

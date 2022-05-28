@@ -33,7 +33,7 @@ Route::group([
     Route::post('/tiket/store',[PenumpangController::class, 'store'])->name('tiket.store');
     Route::get('/tiket/{id}/edit',[PenumpangController::class, 'edit'])->name('tiket.edit');
     Route::post('/tiket/{id}/update',[PenumpangController::class, 'update'])->name('tiket.update');
-    Route::post('/tiket/{id}/delete',[PenumpangController::class, 'destroy'])->name('delete');
+    Route::post('/tiket/{id}/delete',[PenumpangController::class, 'destroy'])->name('tiket.delete');
 
     //kendaraan
     Route::get('/kendaraan',[KendaraanController::class, 'index'])->name('kendaraan');

@@ -106,7 +106,7 @@ class DriverController extends Controller
         $input = $request->all();
         $update->fill($input)->save();
 
-        return redirect('admin/driver')->with('success','Layanan update successfully');
+        return redirect('admin/driver')->with('success','driver update successfully');
     }
 
     /**
@@ -115,8 +115,9 @@ class DriverController extends Controller
      * @param  \App\Models\driver  $driver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(driver $driver)
+    public function destroy(driver $driver, $id)
     {
-        //
+        driver::find($id)->delete();
+        return redirect('admin/driver')->with('success','Driver successfully deleted');
     }
 }

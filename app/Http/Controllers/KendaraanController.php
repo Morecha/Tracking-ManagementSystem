@@ -117,8 +117,9 @@ class KendaraanController extends Controller
      * @param  \App\Models\kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kendaraan $kendaraan)
+    public function destroy(kendaraan $kendaraan, $id)
     {
-        //
+        kendaraan::find($id)->delete();
+        return redirect('admin/kendaraan')->with('success','Driver successfully deleted');
     }
 }

@@ -18,13 +18,12 @@ class PenumpangController extends Controller
      */
     public function index()
     {
-
-        $penumpang = DB::table('penumpangs')
-                    ->join('jalurs', 'jalurs.id', '=', 'penumpangs.id_jalur')
-                    ->join('haris', 'haris.id', '=', 'jalurs.hari')
-                    ->orderBy('jalurs.id')
-                    ->orderBy('keberangkatan')
-                    ->get();
+        $penumpang = DB::table('haris')
+                        ->join('jalurs','jalurs.hari','=','haris.id')
+                        ->join('penumpangs','jalurs.id','=','penumpangs.id_jalur')
+                        ->orderBy('haris.id')
+                        ->orderBy('penumpangs.id')
+                        ->get();
 
         return view('admin.tiket', compact('penumpang'));
     }
@@ -43,7 +42,6 @@ class PenumpangController extends Controller
      */
     public function create($request)
     {
-
         $tujuan = jalur::where('id',$request)->first();
         $hari = hari::where('id',$tujuan->hari)->first();
         $ini = Str::random(7);
@@ -110,8 +108,9 @@ class PenumpangController extends Controller
      * @param  \App\Models\penumpang  $penumpang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penumpang $penumpang)
+    public function destroy(penumpang $penumpang, $id)
     {
-        //
+        penumpang::find($id)->delete();
+        return redirect('admin/tiket')->with('success','Driver successfully deleted');
     }
 }

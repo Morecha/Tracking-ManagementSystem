@@ -26,7 +26,10 @@
                     <td>{{$kendaraan->jumlah_penumpang}}</td>
                     <td>
                         <a href="{{route('admin.kendaraan.edit',$kendaraan->id)}}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        <form action="{{route('admin.kendaraan.delete',$kendaraan->id)}}" method="post" style="display: inline-block;">
+                            @csrf
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

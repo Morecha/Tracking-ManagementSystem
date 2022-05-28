@@ -16,8 +16,8 @@ class CreatePosisisTable extends Migration
         Schema::create('posisis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_kendaraan')->unsigned()->nullable();
-            $table->float('lat')->nullable();
-            $table->float('long')->nullable();
+            $table->decimal('lat',$precision = 10, $scale = 7)->nullable();
+            $table->decimal('long',$precision = 10, $scale = 7)->nullable();
             $table->timestamps();
 
             $table->foreign('id_kendaraan')->references('id')->on('kendaraans')->onUpdate('cascade')->onDelete('cascade');
