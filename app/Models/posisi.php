@@ -12,8 +12,8 @@ class posisi extends Model
     protected static $ignoreChangedAttributes = ['update_at'];
     protected $fillable = [
         'id_kendaraan',
-        'lat',
-        'long',
-        'created_at'
+        'latitude',
+        'longitude',
+        'created_at',
     ];
 }

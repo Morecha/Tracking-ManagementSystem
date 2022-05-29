@@ -21,6 +21,7 @@ class CreateKendaraansTable extends Migration
             $table->string('jenis_kendaraan')->nullable();
             $table->integer('jumlah_penumpang')->nullable();
             $table->integer('jumlah_penumpang_now')->nullable();
+            $table->string('api')->nullable();
             $table->timestamps();
 
             $table->foreign('id_jalur')->references('id')->on('jalurs')->onUpdate('cascade')->onDelete('cascade');

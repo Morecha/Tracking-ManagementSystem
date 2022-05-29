@@ -17,5 +17,6 @@ class kendaraan extends Model
         'jenis_kendaraan',
         'jumlah_penumpang',
         'jumlah_penumpang_now',
+        'api'
     ];
 }

@@ -43,8 +43,11 @@ class PosisiController extends Controller
 
             $map->addMarker(function(LeafletMarker $marker) use($isian){
                 return $marker
-                ->latLng([$isian->lat, $isian->long])
-                ->bindPopup('<b>Hello world!</b><br>I am a popup.');
+                ->latLng([$isian->latitude, $isian->longitude])
+                ->bindPopup('<b>'.$isian->no_plat.' </b><br>
+                                Jenis Kendaraan : '.$isian->jenis_kendaraan.'<br>
+                                Jumlah Penumpang : '.$isian->jumlah_penumpang_now.'<br>
+                                <a href="tracking/'.$isian->id.'"> Track Now <a>');
             });
         }
 
@@ -56,9 +59,9 @@ class PosisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tracking($id)
     {
-        //
+        return view('tracking');
     }
 
     /**
@@ -67,9 +70,10 @@ class PosisiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function api($id)
     {
-        //
+        $data = posisi::where('id_kendaraan',$id)->orderBy('id','desc')->first();
+        return $data;
     }
 
     /**

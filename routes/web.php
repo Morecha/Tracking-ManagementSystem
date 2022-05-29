@@ -11,6 +11,8 @@ use App\Http\Controllers\{DashboardController, UserController, RoleController,
 // Route::get('/', function () {return view('welcome');});
 
 Route::get('/', [PosisiController::class, 'index'])->name('index');
+Route::get('/api/{id}',[PosisiController::class, 'api'])->name('api');
+Route::get('/tracking/{id}',[PosisiController::class, 'tracking'])->name('tracking');
 
 Route::group([
 	'middleware' => 'auth',
