@@ -15,7 +15,7 @@
             	@elseif(session()->has('failed'))
             		<x-alert type="failed" message="{{ session()->get('failed') }}" />
             	@endif
-            	
+
                 <x-card>
 
                 	<div class="text-center mb-2">

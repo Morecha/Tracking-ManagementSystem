@@ -12,7 +12,6 @@
 		</style>
 	</head>
 	<body>
-
 	<div id="map"></div>
 	</body>
 
@@ -58,7 +57,7 @@
             // Make a GET request to the API and return the location of the ISS.
                 try {
                     const response = await fetch(
-                        'http://localhost:8000/api/1',
+                        'http://localhost:8000/api/{{$id}}',
                         { method: 'GET' }
                     );
 

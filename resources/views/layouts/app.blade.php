@@ -49,7 +49,7 @@
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                         <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
-                            <b><a href="https://github.com/superXdev" target="_blank">superXdev</a></b>
+                            <b><a href="https://github.com/Morecha" target="_blank">Morecha</a></b>
                         </span>
                         </div>
                     </div>

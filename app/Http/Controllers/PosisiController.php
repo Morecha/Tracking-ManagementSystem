@@ -61,7 +61,8 @@ class PosisiController extends Controller
      */
     public function tracking($id)
     {
-        return view('tracking');
+
+        return view('tracking', ['id'=>$id]);
     }
 
     /**
