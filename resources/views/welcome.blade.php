@@ -7,35 +7,32 @@
         <title>welcome</title>
         {!! @$map->styles() !!}
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <link href="{{ asset('dist/img/logo/pepega.png') }}" rel="shortcut icon" type="image/x-icon">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <!-- Styles -->
         <style>
             body { margin: 0; padding: 0; }
-            #map { position: absolute; top: 7%; bottom: 0%; width: 100%; }
+            #map { top: 5.7%; bottom: 0%; width: 100%; }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="">
         {{-- navbar --}}
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <nav class="navbar navbar-dark bg-dark justify-content-between position-static">
+            <div class="container-fluid">
+                <a class="navbar-brand">Navbar</a>
+                @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/admin/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{{ url('/admin/dashboard') }}" class="nav-link">Dashboard</a></button>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                        {{-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif --}}
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{{ route('login') }}" class="nav-link">Log in</a></button>
                     @endauth
-                </div>
-            @endif
+                @endif
+            </div>
+        </nav>
 
-            <div id="map"></div>
-        </div>
-        {{-- isi --}}
-        <div class="position-fixed">
+        <div id="map">
             {!! @$map->render() !!}
         </div>
 

@@ -34,9 +34,13 @@
 					<div class="form-group">
 						<label for="kendaraan">Jalur</label>
                             <select name="id_jalur" id="kendaraan" class="form-control">
+                                @if (is_null($jalur))
+                                <option value="">Masukkan Jalur</option>
+                                @else
                                 <option value="{{$kendaraan->id_jalur}}"> {{$jalur->kota_asal}} -----> {{$jalur->kota_tujuan}} </option>
+                                @endif
                                 @foreach ($alljalur as $alljalur)
-                                    <option value="{{$alljalur->id}}"> {{$alljalur->kota_asal}} -----> {{$alljalur->kota_tujuan}}</option>
+                                <option value="{{$alljalur->id}}"> {{$alljalur->kota_asal}} -----> {{$alljalur->kota_tujuan}}</option>
                                 @endforeach
                             </select>
 					</div>

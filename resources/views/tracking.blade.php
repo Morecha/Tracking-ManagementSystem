@@ -4,6 +4,8 @@
 		<meta charset="utf-8">
 		<title>Add live realtime data</title>
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="{{ asset('dist/img/logo/pepega.png') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 		<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
 		<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
 		<style>
@@ -12,8 +14,23 @@
 		</style>
 	</head>
 	<body>
-	<div id="map"></div>
+        <nav class="navbar navbar-dark bg-dark justify-content-between position-static">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Back</a>
+                @if (Route::has('login'))
+                    @auth
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{{ url('/admin/dashboard') }}" class="nav-link">Dashboard</a></button>
+                    @else
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="{{ route('login') }}" class="nav-link">Log in</a></button>
+                    @endauth
+                @endif
+            </div>
+        </nav>
+	    <div id="map"></div>
 	</body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <script>
         mapboxgl.accessToken = '{{ env('MAPBOX_ACCESS_TOKEN') }}';

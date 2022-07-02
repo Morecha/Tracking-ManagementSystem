@@ -18,6 +18,7 @@ class CreatePenumpangsTable extends Migration
             $table->bigInteger('id_jalur')->unsigned()->nullable();
             $table->string('kode_penumpang')->nullable();
             $table->string('atas_nama')->nullable();
+            $table->date('keberangkatan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_jalur')->references('id')->on('jalurs')->onUpdate('cascade')

@@ -18,6 +18,7 @@ class JalurSeeder extends Seeder
             'kota_asal'=>'Malang',
             'kota_tujuan'=>'Surabaya',
             'harga'=>100000,
+            'keberangkatan'=>131500,
             'hari' => 1
         ]);
 
@@ -25,6 +26,7 @@ class JalurSeeder extends Seeder
             'kota_asal'=>'Surabaya',
             'kota_tujuan'=>'Malang',
             'harga'=>100000,
+            'keberangkatan'=>203000,
             'hari' => 2
         ]);
     }

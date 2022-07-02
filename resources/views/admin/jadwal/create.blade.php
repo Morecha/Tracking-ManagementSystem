@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="exampleFormControlInput1" class="form-label">Waktu</label>
-                    <input class="form-control" type="text" placeholder="Jam : Menit : Detik" name="keberangkatan">
+                    <input class="form-control" type="time" placeholder="Jam : Menit : Detik" name="keberangkatan">
                 </div>
 			</div>
 

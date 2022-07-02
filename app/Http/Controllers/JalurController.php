@@ -51,7 +51,14 @@ class JalurController extends Controller
         ]);
 
         $input = $request->all();
-        jalur::create($input);
+        $jalur = jalur::create($input);
+
+        activity()
+        ->withProperties(['attributes' => ['kota_asal'=>$input['kota_asal'],
+                                            'kota_tujuan'=>$input['kota_tujuan']]])
+        ->causedBy(auth()->user())
+        ->performedOn($jalur)
+        ->log('You have created jalur');
 
         return redirect('/admin/jadwal')->with('success','Tempat created successfully');
     }
@@ -100,6 +107,19 @@ class JalurController extends Controller
         ]);
 
         $input = $request->all();
+
+        activity()
+        ->withProperties(['attributes' => ['kota asal lama'=>$update->kota_asal,
+                                            'kota tujuan lama'=>$update->kota_tujuan,
+                                            'harga lama'=>$update->harga,
+                                            'kota asal baru'=>$request->kota_asal,
+                                            'kota tujuan baru'=>$request->kota_tujuan,
+                                            'harga baru'=>$request->harga
+                                            ]])
+        ->causedBy(auth()->user())
+        ->performedOn($update)
+        ->log('You have updated jalur');
+
         $update->fill($input)->save();
 
         return redirect('admin/jadwal')->with('success','Jadwal update successfully');
@@ -113,7 +133,18 @@ class JalurController extends Controller
      */
     public function destroy(jalur $jalur, $id)
     {
-        jalur::find($id)->delete();
+        $log = jalur::find($id);
+
+        activity()
+        ->withProperties(['attributes' => ['kota_asal'=>$log->kota_asal,
+                                            'kota_tujuan'=>$log->kota_tujuan,
+                                            'harga'=>$log->harga]])
+        ->causedBy(auth()->user())
+        ->performedOn($log)
+        ->log('You have delete jalur');
+
+        $log->delete();
+
         return redirect('admin/jadwal')->with('success','Jadwal successfully deleted');
     }
 }

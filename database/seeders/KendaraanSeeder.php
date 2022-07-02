@@ -19,8 +19,7 @@ class KendaraanSeeder extends Seeder
             'no_kendaraan' => '31241NTR69696',
             'no_plat' =>'N 1166 AA',
             'jenis_kendaraan'=>'Ferrari2010',
-            'jumlah_penumpang' => 3,
-            'jumlah_penumpang_now' => 0
+            'jumlah_penumpang' => 3
         ]);
 
         DB::table('kendaraans')->insert([
@@ -28,8 +27,7 @@ class KendaraanSeeder extends Seeder
             'no_kendaraan' => 'N3TT0R44R33',
             'no_plat' =>'B 4481 IT',
             'jenis_kendaraan'=>'Bison',
-            'jumlah_penumpang' => 12,
-            'jumlah_penumpang_now' => 0
+            'jumlah_penumpang' => 12
         ]);
     }
 }

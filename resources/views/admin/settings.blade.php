@@ -21,7 +21,7 @@
 
 					<x-input text="File Logo" name="logo" type="file" />
 
-					<x-input text="URL Website" name="url" type="text" value="{{ setting('url') }}" />
+					{{-- <x-input text="URL Website" name="url" type="text" value="{{ setting('url') }}" /> --}}
 				</x-card>
 			</div>
 			<!-- SEO settings -->
@@ -30,6 +30,8 @@
 					<x-slot name="title">SEO</x-slot>
 
 					<x-input text="Site Name" name="site_name" type="text" value="{{ setting('site_name') }}" />
+
+                    {{-- <x-input text="Owner" name="owner" type="text" value="{{ setting('owner') }}" /> --}}
 
 					<x-input text="Keyword" name="keyword" type="text" value="{{ setting('keyword') }}" />
 
@@ -43,5 +45,5 @@
 			</div>
 		</div>
 	</form>
-	
+
 </x-app-layout>

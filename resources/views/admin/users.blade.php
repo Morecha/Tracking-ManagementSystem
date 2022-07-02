@@ -1,6 +1,5 @@
 <x-app-layout>
 	<x-slot name="title">Users</x-slot>
-
 	<x-card>
 		<table class="table table-bordered">
 			<thead>

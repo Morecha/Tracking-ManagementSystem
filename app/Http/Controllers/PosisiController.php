@@ -6,16 +6,7 @@ use App\Models\posisi;
 use App\Models\kendaraan;
 use Illuminate\Http\Request;
 use Bagusindrayana\LaravelMaps\LaravelMaps;
-use BagusIndrayana\LaravelMaps\Leaflet\LeafletGeojson;
 use BagusIndrayana\LaravelMaps\Leaflet\LeafletMarker;
-use BagusIndrayana\LaravelMaps\Leaflet\LeafletPolygon;
-use BagusIndrayana\LaravelMaps\Leaflet\LeafletCircle;
-use Bagusindrayana\LaravelMaps\Mapbox\MapboxMarker;
-use BagusIndrayana\LaravelMap\LaravelMap;
-use BagusIndrayana\LaravelMap\MapBox\MapboxGeocoder;
-use BagusIndrayana\LaravelMap\MapBox\Marker;
-use BagusIndrayana\LaravelMap\MapBox\NavigationControl;
-use BagusIndrayana\LaravelMap\MapBox\Popup;
 use Illuminate\Support\Facades\DB;
 
 class PosisiController extends Controller
@@ -28,8 +19,8 @@ class PosisiController extends Controller
     public function index()
     {
         $kendaraan = kendaraan::all();
+        $posisi = posisi::all();
 
-            // dd($isian);
         $map = LaravelMaps::leaflet('map')
         ->setView([-1.550366, 119.345413], 5);
 
@@ -40,15 +31,16 @@ class PosisiController extends Controller
                     ->where('posisis.id_kendaraan', $kendaraan->id)
                     ->orderBy('posisis.id', 'desc')
                     ->first();
-
-            $map->addMarker(function(LeafletMarker $marker) use($isian){
-                return $marker
-                ->latLng([$isian->latitude, $isian->longitude])
-                ->bindPopup('<b>'.$isian->no_plat.' </b><br>
-                                Jenis Kendaraan : '.$isian->jenis_kendaraan.'<br>
-                                Jumlah Penumpang : '.$isian->jumlah_penumpang_now.'<br>
-                                <a href="tracking/'.$isian->id.'"> Track Now <a>');
-            });
+            if(isset($isian->latitude))
+            {
+                $map->addMarker(function(LeafletMarker $marker) use($isian){
+                    return $marker
+                    ->latLng([$isian->latitude, $isian->longitude])
+                    ->bindPopup('<b>'.$isian->no_plat.' </b><br>
+                                    Jenis Kendaraan : '.$isian->jenis_kendaraan.'<br>
+                                    <a href="tracking/'.$isian->id.'"> Track Now <a>');
+                });
+            }
         }
 
         return view('welcome',compact('map'));

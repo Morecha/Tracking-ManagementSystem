@@ -35,7 +35,7 @@
 						data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-roles="{{ $user->getRoleNames() }}" data-created="{{ $user->created_at->format('d-M-Y H:m:s') }}">
 							<i class="fas fa-eye"></i>
 						</button>
-						<a href="{{ route('admin.member.edit', $user->id) }}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a> 
+						<a href="{{ route('admin.member.edit', $user->id) }}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
 						<form action="{{ route('admin.member.delete', $user->id) }}" style="display: inline-block;" method="POST">
 							@csrf
 							<button type="button" class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
@@ -49,6 +49,7 @@
 				@endforelse
 			</tbody>
 		</table>
+        {{ $users->links() }}
 	</x-card>
 
 	<x-modal>

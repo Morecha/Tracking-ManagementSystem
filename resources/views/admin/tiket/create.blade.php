@@ -42,12 +42,17 @@
                     <label for="exampleFormControlInput1" class="form-label">Hari</label>
 					<span class="input-group-text" id="basic-addon2">{{$hari->nama_hari}}</span>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-3">
                     <br>
                     <label for="exampleFormControlInput1" class="form-label">Waktu</label>
 					<span class="input-group-text" id="basic-addon2">{{$tujuan->keberangkatan}}</span>
 				</div>
-			</div>
+                <div class="col-md-3">
+                    <br>
+                    <label for="exampleFormControlInput1" class="form-label">Tanggal</label><br>
+                    <input type="date" id="date" class="form-control" name="keberangkatan">
+				</div>
+			</div><br><br>
 
 			<x-button type="primary" text="Submit" for="submit" />
 

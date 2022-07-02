@@ -59,11 +59,20 @@ class PenumpangController extends Controller
         $this->validate($request, [
             'id_jalur' => 'required',
             'kode_penumpang' => 'required',
-            'atas_nama' => 'required'
+            'atas_nama' => 'required',
+            'keberangkatan' => 'required'
         ]);
 
         $input = $request->all();
-        penumpang::create($input);
+        $create = penumpang::create($input);
+
+        activity()
+        ->withProperties(['attributes' => ['kode_penumpang'=>$input['kode_penumpang'],
+                                            'A/N'=>$input['atas_nama'],
+                                            'keberangkatan'=>$input['keberangkatan']]])
+        ->causedBy(auth()->user())
+        ->performedOn($create)
+        ->log('You have add penumpang');
 
         return redirect('/admin/tiket')->with('success','tiket created successfully');
     }
@@ -110,7 +119,18 @@ class PenumpangController extends Controller
      */
     public function destroy(penumpang $penumpang, $id)
     {
-        penumpang::find($id)->delete();
+        $log = penumpang::find($id);
+
+        activity()
+        ->withProperties(['attributes' => ['kode_penumpang'=>$log['kode_penumpang'],
+                                            'A/N'=>$log['atas_nama'],
+                                            'keberangkatan'=>$log['keberangkatan']]])
+        ->causedBy(auth()->user())
+        ->performedOn($log)
+        ->log('You have delete penumpang');
+
+        $log->delete();
+
         return redirect('admin/tiket')->with('success','Driver successfully deleted');
     }
 }

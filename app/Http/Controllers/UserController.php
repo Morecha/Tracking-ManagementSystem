@@ -23,7 +23,9 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::latest()->paginate(10);
+        $users = User::orderBy('id')->paginate(10);
+        // $users = DB::table('users')->orderBy('id')->paginate(10);
+        // dd($users);
         return view('admin.users.index',compact('users'));
     }
 

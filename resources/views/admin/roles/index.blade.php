@@ -23,7 +23,7 @@
 					<td>{{ $role->id }}</td>
 					<td>{{ $role->name }}</td>
 					<td class="text-center">
-						<a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a> 
+						<a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-primary mr-1"><i class="fas fa-edit"></i></a>
 						<form action="{{ route('admin.roles.delete', $role->id) }}" style="display: inline-block;" method="POST">
 							@csrf
 							<button type="button" class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
@@ -37,6 +37,7 @@
 				@endforelse
 			</tbody>
 		</table>
+        {{ $roles->links() }}
 	</x-card>
 
 	<x-slot name="script">

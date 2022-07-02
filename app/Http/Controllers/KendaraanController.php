@@ -21,9 +21,10 @@ class KendaraanController extends Controller
         //     })->get();
 
         $kendaraan = DB::table('jalurs')
-                    ->join('kendaraans','jalurs.id','=','kendaraans.id_jalur')
+                    ->rightJoin('kendaraans','jalurs.id','=','kendaraans.id_jalur')
                     ->orderBy('kendaraans.id')
                     ->get();
+
         return view('admin.kendaraan',compact('kendaraan'));
     }
 
@@ -56,7 +57,16 @@ class KendaraanController extends Controller
         ]);
 
         $input = $request->all();
-        kendaraan::create($input);
+        $log = kendaraan::create($input);
+
+        activity()
+        ->withProperties(['attributes' => ['no_kendaraan'=>$input['no_kendaraan'],
+                                            'no_plat'=>$input['no_plat'],
+                                            'jenis_kendaraan'=>$input['jenis_kendaraan'],
+                                            'jumlah_penumpang'=>$input['jumlah_penumpang']]])
+        ->causedBy(auth()->user())
+        ->performedOn($log)
+        ->log('You have created Transportation');
 
         return redirect('/admin/kendaraan')->with('success','Tempat created successfully');
     }
@@ -84,6 +94,7 @@ class KendaraanController extends Controller
         $jalur = jalur::where('id',$kendaraan->id)->first();
         $alljalur = jalur::orderby('id')->get();
 
+
         return view('admin.kendaraan.edit', compact('kendaraan','jalur','alljalur'));
     }
 
@@ -106,6 +117,20 @@ class KendaraanController extends Controller
         ]);
 
         $input = $request->all();
+
+        activity()
+        ->withProperties(['attributes' => ['no kendaraan lama'=>$update->no_kendaraan,
+                                            'no plat lama'=>$update->no_plat,
+                                            'jenis kendaraan lama'=>$update->jenis_kendaraan,
+                                            'jumlah penumpang lama'=>$update->jumlah_penumpang,
+                                            'no kendaraan baru'=>$input['no_kendaraan'],
+                                            'no plat baru'=>$input['no_plat'],
+                                            'jenis kendaraan baru'=>$input['jenis_kendaraan'],
+                                            'jumlah penumpang baru'=>$input['jumlah_penumpang']]])
+        ->causedBy(auth()->user())
+        ->performedOn($update)
+        ->log('You have updated Transportation');
+
         $update->fill($input)->save();
 
         return redirect('admin/kendaraan')->with('success','Layanan update successfully');
@@ -119,7 +144,19 @@ class KendaraanController extends Controller
      */
     public function destroy(kendaraan $kendaraan, $id)
     {
-        kendaraan::find($id)->delete();
+        $log = kendaraan::find($id);
+
+        activity()
+        ->withProperties(['attributes' => ['no kendaraan baru'=>$log['no_kendaraan'],
+                                            'no plat baru'=>$log['no_plat'],
+                                            'jenis kendaraan baru'=>$log['jenis_kendaraan'],
+                                            'jumlah penumpang baru'=>$log['jumlah_penumpang']]])
+        ->causedBy(auth()->user())
+        ->performedOn($log)
+        ->log('You have delete Transportation');
+
+        $log->delete();
+
         return redirect('admin/kendaraan')->with('success','Driver successfully deleted');
     }
 }

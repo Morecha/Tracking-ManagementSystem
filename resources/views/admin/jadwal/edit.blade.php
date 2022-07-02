@@ -26,7 +26,7 @@
 					<x-input text="Harga" name="harga" type="text" value="{{$jalur->harga}}"/>
 				</div>
 				<div class="col-md-6">
-					<x-input text="keberangkatan" name="keberangkatan" type="text" value="{{$jalur->keberangkatan}}"/>
+					<x-input text="keberangkatan" name="keberangkatan" type="time" value="{{$jalur->keberangkatan}}"/>
 				</div>
 			</div>
 
@@ -35,9 +35,9 @@
 					<div class="form-group">
 						<label for="days">Hari</label>
                             <select name="hari" id="days" class="form-control">
-                                <option value="{{$jalur->hari}}"> {{$hari->nama_hari}} </option>
+                                <option selected value="{{$jalur->hari}}"> {{$hari->nama_hari}} </option>
                                 @foreach ($allhari as $allhari)
-                                    <option value="{{$allhari->id}}">{{$allhari->nama_hari}}</option>
+                                <option value="{{$allhari->id}}">{{$allhari->nama_hari}}</option>
                                 @endforeach
                             </select>
 					</div>

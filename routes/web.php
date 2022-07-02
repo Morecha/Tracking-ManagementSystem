@@ -20,6 +20,7 @@ Route::group([
 	'as' => 'admin.'
 ], function(){
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/tracking/{id}',[PosisiController::class, 'tracking'])->name('tracking');
 
     //jadwal atau shcedule
     Route::get('/jadwal',[JalurController::class, 'index'])->name('jadwal');

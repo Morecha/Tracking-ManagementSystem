@@ -13,6 +13,7 @@ class penumpang extends Model
     protected $fillable = [
         'id_jalur',
         'kode_penumpang',
-        'atas_nama'
+        'atas_nama',
+        'keberangkatan'
     ];
 }

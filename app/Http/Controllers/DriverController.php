@@ -55,8 +55,16 @@ class DriverController extends Controller
         ]);
 
         $input = $request->all();
+        $driver = driver::create($input);
 
-        driver::create($input);
+        activity()
+        ->withProperties(['attributes' => ['nama'=>$request->nama,
+                                            'NIP'=>$request->NIP,
+                                            'kontak'=>$request->contac_person
+                                            ]])
+        ->causedBy(auth()->user())
+        ->performedOn($driver)
+        ->log('You have create driver');
 
         return redirect('/admin/driver')->with('success','New Driver has been Created');
     }
@@ -104,6 +112,19 @@ class DriverController extends Controller
             'id_kendaraan' => 'required'
         ]);
         $input = $request->all();
+
+        activity()
+        ->withProperties(['attributes' => ['nama lama'=>$update->nama,
+                                            'NIP lama'=>$update->NIP,
+                                            'kontak lama'=>$update->contac_person,
+                                            'nama baru'=>$request->nama,
+                                            'NIP baru'=>$request->NIP,
+                                            'kontak baru'=>$request->contac_person
+                                            ]])
+        ->causedBy(auth()->user())
+        ->performedOn($update)
+        ->log('You have edit driver');
+
         $update->fill($input)->save();
 
         return redirect('admin/driver')->with('success','driver update successfully');
@@ -117,7 +138,18 @@ class DriverController extends Controller
      */
     public function destroy(driver $driver, $id)
     {
-        driver::find($id)->delete();
+        $log = driver::find($id);
+
+        activity()
+        ->withProperties(['attributes' => ['kota_asal'=>$log->nama,
+                                            'kota_tujuan'=>$log->NIP,
+                                            'harga'=>$log->contac_person]])
+        ->causedBy(auth()->user())
+        ->performedOn($log)
+        ->log('You have delete jalur');
+
+        $log->delete();
+
         return redirect('admin/driver')->with('success','Driver successfully deleted');
     }
 }

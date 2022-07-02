@@ -60,7 +60,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         // logging
-        $role = new Role();
+        // $role = new Role();
         activity()
             ->withProperties(['name' => $request->name])
             ->causedBy(auth()->user())
@@ -140,7 +140,7 @@ class RoleController extends Controller
         activity()
             ->withProperties(['name' => $role_name])
             ->causedBy(auth()->user())
-            ->performedOn($role)
+            ->performedOn($id)
            ->log('You have deleted roles');
 
         return redirect()->route('admin.roles')
