@@ -1,14 +1,8 @@
-# QAdmin
-a free, open-source dashboard panel starter kit for Laravel. Just intall and everything is ready
-
+## QAdmin
+here I'm using Qadmin for free, open-source dashboard panel starter kit for Laravel. Just intall and everything is ready
 ![App Screenshot](https://github.com/superXdev/QAdmin/blob/main/public/dist/img/screenshot/ss.png?raw=true)
-
-  
-
-## Tech Stack
-
+which is adopted template from ruang admin
 **Client:** [ruangAdmin](https://github.com/indrijunanda/RuangAdmin), Bootstrap, Jquery, filePond
-
 **Server:** PHP 7.3.x, Laravel 8.x
 
   
