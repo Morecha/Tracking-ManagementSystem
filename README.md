@@ -13,7 +13,7 @@ which is adopted template from ruang admin
 - [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
 - [akaunting/laravel-setting](https://github.com/akaunting/laravel-setting)
 - [Laravel Modules](https://nwidart.com/laravel-modules/v1)
-- [Mapbox maps] (https://www.mapbox.com/)
+- [Mapbox maps](https://www.mapbox.com/)
 
 ## Features
 
