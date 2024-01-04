@@ -1,5 +1,5 @@
 ## QAdmin
-here I'm using Qadmin for free, open-source dashboard panel starter kit for Laravel. Just intall and everything is ready
+here I'm using Qadmin for free, open-source dashboard panel starter kit for Laravel. I'm modify it, so it suit into my purpose to build dashboard for travel tracking and management. there is CRUD for driver, tracked cars or untracked cars with IoT, there's role and user as well. and the details for the cars.
 ![App Screenshot](https://github.com/superXdev/QAdmin/blob/main/public/dist/img/screenshot/ss.png?raw=true)
 which is adopted template from ruang admin
 
@@ -7,14 +7,13 @@ which is adopted template from ruang admin
 
 **Server:** PHP 7.3.x, Laravel 8.x
 
-**Dependencies :***
+**Dependencies :**
 - [Laravel Breeze](https://github.com/laravel/breeze)
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
 - [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
 - [akaunting/laravel-setting](https://github.com/akaunting/laravel-setting)
 - [Laravel Modules](https://nwidart.com/laravel-modules/v1)
 
-  
 ## Features
 
 - ruangAdmin template
@@ -25,36 +24,8 @@ which is adopted template from ruang admin
 - 15 laravel components ready-to-use
 - Laravel modules
 - Unit testing
-  
-## Installation 
-
-You can fork or clone this project
-
-``` 
-git clone git@github.com:superXdev/QAdmin.git
-cd QAdmin
-composer install
-cp .env.example .env <-- edit db config
-php artisan admin:install
-```
-That's it!
-
-## Admin credentials
-- **Email:** admin@gmail.com
-- **Password:** admin123
-
-## Running Tests
-
-To run tests, run the following command
-
-```
-php artisan test
-```
-
-```
-Tests:  29 passed
-Time:   7.58s
-```
+- live Tracking Internet of things Moduls
+- 
 
 ## License
 
