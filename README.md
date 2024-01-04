@@ -1,6 +1,6 @@
 ## QAdmin
 here I'm using Qadmin for free, open-source dashboard panel starter kit for Laravel. I'm modify it, so it suit into my purpose to build dashboard for travel tracking and management. there is CRUD for driver, tracked cars or untracked cars with IoT, there's role and user as well. and the details for the cars.
-![App Screenshot](https://github.com/superXdev/QAdmin/blob/main/public/dist/img/screenshot/ss.png?raw=true)
+![App Screenshot]
 which is adopted template from ruang admin
 
 **Client:** [ruangAdmin](https://github.com/indrijunanda/RuangAdmin), Bootstrap, Jquery, filePond
