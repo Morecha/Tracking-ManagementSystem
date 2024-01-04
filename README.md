@@ -13,6 +13,7 @@ which is adopted template from ruang admin
 - [spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
 - [akaunting/laravel-setting](https://github.com/akaunting/laravel-setting)
 - [Laravel Modules](https://nwidart.com/laravel-modules/v1)
+- [Mapbox maps] (https://www.mapbox.com/)
 
 ## Features
 
@@ -24,8 +25,11 @@ which is adopted template from ruang admin
 - 15 laravel components ready-to-use
 - Laravel modules
 - Unit testing
-- live Tracking Internet of things Moduls
-- 
+- live Tracking Internet of things Moduls (1cars)
+- Maps position for all cars and the details
+- CRUD for Cars and Schedule
+- CRUD for Driver
+- CRUD for ticketing
 
 ## License
 
